@@ -17,6 +17,14 @@ Desktop JavaFX application for extracting matching lines from multiple `.txt` an
 - JDK 21 with `jpackage` available on `PATH`
 - Windows PowerShell
 
+## Open In IntelliJ IDEA
+
+1. Open the repository folder as a Maven project.
+2. Set **File > Project Structure > Project SDK** to JDK 21.
+3. Set the `keyword-extractor` module SDK to **Project SDK**.
+4. Reload Maven from the Maven tool window if dependencies are not detected automatically.
+5. Run the app with the Maven configuration `Run Keyword Extractor`, or run the `javafx:run` goal from the Maven tool window.
+
 ## Run From Source
 
 ```powershell
