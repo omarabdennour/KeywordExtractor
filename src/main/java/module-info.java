@@ -1,4 +1,4 @@
-module com.aws.basic.demo {
+module com.keywordextractor.desktop {
     requires javafx.controls;
     requires javafx.fxml;
     requires spring.beans;
@@ -9,6 +9,6 @@ module com.aws.basic.demo {
     requires jakarta.annotation;
 
 
-    opens com.KeywordExtractor.basic;
-    exports com.KeywordExtractor.basic;
+    opens com.keywordextractor.desktop;
+    exports com.keywordextractor.desktop;
 }

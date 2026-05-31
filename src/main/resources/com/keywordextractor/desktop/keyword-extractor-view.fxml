@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane styleClass="app-root" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.KeywordExtractor.basic.HelloController">
+            fx:controller="com.keywordextractor.desktop.KeywordExtractorController">
     <top>
         <HBox alignment="CENTER_LEFT" spacing="16" styleClass="top-bar">
             <VBox spacing="3">

@@ -1,4 +1,4 @@
-package com.KeywordExtractor.basic;
+package com.keywordextractor.desktop;
 
 import org.springframework.stereotype.Service;
 
@@ -26,6 +26,8 @@ public class KeywordExtractionService {
             try (BufferedReader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8)) {
                 String line;
                 int lineNumber = 0;
+
+                // Keep matching line-based so large files can be scanned without loading them fully.
                 while ((line = reader.readLine()) != null) {
                     lineNumber++;
                     scannedLines++;
@@ -49,13 +51,22 @@ public class KeywordExtractionService {
         return new Match(file.getFileName() + ":" + lineNumber + ": " + line, line);
     }
 
+    /**
+     * Search options collected from the JavaFX form.
+     */
     public record ExtractionRequest(List<Path> files, String keyword, boolean caseSensitive,
                                     boolean includeSourceInfo) {
     }
 
+    /**
+     * Keeps display text separate from clipboard text so copied results can omit file metadata.
+     */
     public record Match(String displayText, String lineContent) {
     }
 
+    /**
+     * Full scan result, including partial failures for files that could not be read.
+     */
     public record ExtractionResult(int fileCount, int scannedLineCount, int matchCount, List<Match> matches,
                                    List<String> errors) {
         public String output() {

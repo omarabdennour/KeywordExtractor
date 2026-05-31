@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.KeywordExtractor.basic</groupId>
+    <groupId>com.keywordextractor.desktop</groupId>
     <artifactId>keyword-extractor</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Keyword Extractor</name>
@@ -97,7 +97,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.KeywordExtractor.basic.Launcher</mainClass>
+                    <mainClass>com.keywordextractor.desktop.KeywordExtractorLauncher</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -109,7 +109,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.aws.basic.demo/com.KeywordExtractor.basic.Launcher</mainClass>
+                            <mainClass>com.keywordextractor.desktop/com.keywordextractor.desktop.KeywordExtractorLauncher</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

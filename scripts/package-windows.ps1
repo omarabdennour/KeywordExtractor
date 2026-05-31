@@ -20,7 +20,7 @@ $TargetDirectory = Join-Path $ProjectRoot "target"
 $PackageWorkDirectory = Join-Path $TargetDirectory "jpackage"
 $InputDirectory = Join-Path $PackageWorkDirectory "input"
 $InstallerDirectory = Join-Path $TargetDirectory "installer"
-$SourceIcon = Join-Path $ProjectRoot "src\main\resources\com\KeywordExtractor\basic\app-icon.png"
+$SourceIcon = Join-Path $ProjectRoot "src\main\resources\com\keywordextractor\desktop\app-icon.png"
 $WindowsIcon = Join-Path $PackageWorkDirectory "app-icon.ico"
 $JarPath = Join-Path $TargetDirectory $JarName
 

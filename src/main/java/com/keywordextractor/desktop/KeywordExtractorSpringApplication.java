@@ -1,4 +1,4 @@
-package com.KeywordExtractor.basic;
+package com.keywordextractor.desktop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

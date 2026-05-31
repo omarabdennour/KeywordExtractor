@@ -1,4 +1,4 @@
-package com.KeywordExtractor.basic;
+package com.keywordextractor.desktop;
 
 import jakarta.annotation.PreDestroy;
 import javafx.application.Platform;
@@ -28,11 +28,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Component
-public class HelloController {
+public class KeywordExtractorController {
     private final KeywordExtractionService extractionService;
     private final ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor();
     private final ObservableList<String> selectedFileNames = FXCollections.observableArrayList();
     private final List<Path> selectedFiles = new ArrayList<>();
+
+    // Identifies the newest scan so late background results cannot overwrite newer UI state.
     private final AtomicLong scanVersion = new AtomicLong();
     private String copyResultsText = "";
 
@@ -63,7 +65,7 @@ public class HelloController {
     @FXML
     private ProgressIndicator progressIndicator;
 
-    public HelloController(KeywordExtractionService extractionService) {
+    public KeywordExtractorController(KeywordExtractionService extractionService) {
         this.extractionService = extractionService;
     }
 
@@ -173,6 +175,8 @@ public class HelloController {
         );
 
         beginScan();
+
+        // File IO runs off the JavaFX thread; UI updates are marshalled back with Platform.runLater.
         CompletableFuture
                 .supplyAsync(() -> extractionService.extract(request), executorService)
                 .whenComplete((result, throwable) -> Platform.runLater(() -> {
