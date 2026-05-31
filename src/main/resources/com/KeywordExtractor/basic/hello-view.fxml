@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="app-root" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.KeywordExtractor.basic.HelloController">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="16" styleClass="top-bar">
+            <VBox spacing="3">
+                <Label styleClass="app-title" text="Keyword Extractor"/>
+                <Label styleClass="app-subtitle" text="Scan multiple text and CSV files for matching lines"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="statusBadge" styleClass="status-badge" text="Ready"/>
+            <ProgressIndicator fx:id="progressIndicator" maxHeight="20" maxWidth="20"
+                               minHeight="20" minWidth="20" progress="-1"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="16">
+            <VBox spacing="14" styleClass="panel">
+                <GridPane hgap="14" vgap="12">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="64"/>
+                        <ColumnConstraints percentWidth="36"/>
+                    </columnConstraints>
+
+                    <VBox spacing="8" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label styleClass="field-label" text="Keyword"/>
+                        <TextField fx:id="keywordField" promptText="Type to scan selected files"/>
+                    </VBox>
+
+                    <HBox alignment="BOTTOM_LEFT" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Button fx:id="startLookupButton" onAction="#onStartLookup" styleClass="primary-button" text="Start lookup"/>
+                        <Button fx:id="selectFilesButton" onAction="#onSelectFiles" styleClass="primary-button" text="Select files"/>
+                        <Button fx:id="clearFilesButton" onAction="#onClearFiles" styleClass="secondary-button" text="Clear"/>
+                    </HBox>
+                </GridPane>
+
+                <HBox alignment="CENTER_LEFT" spacing="18">
+                    <CheckBox fx:id="caseSensitiveCheckBox" styleClass="quiet-check" text="Case-sensitive"/>
+                    <CheckBox fx:id="sourceInfoCheckBox" styleClass="quiet-check" text="Show file and line number"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="selectedCountLabel" styleClass="section-caption" text="0 file(s) selected"/>
+                </HBox>
+            </VBox>
+
+            <HBox spacing="16" VBox.vgrow="ALWAYS">
+                <VBox spacing="10" prefWidth="310" styleClass="panel">
+                    <VBox spacing="3">
+                        <Label styleClass="section-title" text="Files"/>
+                        <Label styleClass="section-caption" text="Selected .txt and .csv files"/>
+                    </VBox>
+                    <ListView fx:id="fileListView" styleClass="navigator-list" VBox.vgrow="ALWAYS"/>
+                </VBox>
+
+                <VBox spacing="10" styleClass="panel" HBox.hgrow="ALWAYS">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <VBox spacing="3">
+                            <Label styleClass="section-title" text="Live Results"/>
+                            <Label fx:id="summaryLabel" styleClass="section-caption" text="Waiting for input"/>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="copyResultsButton" onAction="#onCopyResults" styleClass="primary-button" text="Copy results"/>
+                    </HBox>
+                    <Separator/>
+                    <TextArea fx:id="resultArea" editable="false" wrapText="false" VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+
+    <padding>
+        <Insets bottom="18" left="18" right="18" top="18"/>
+    </padding>
+</BorderPane>
